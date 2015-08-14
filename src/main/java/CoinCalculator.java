@@ -23,9 +23,18 @@ public class CoinCalculator {
 
         String stringUserAmount = request.queryParams("userAmount");
         Integer userAmount = Integer.parseInt(stringUserAmount);
-        String changeCalculated = calculateCoins(userAmount);
+        String stringQuarterLimit = request.queryParams("quarterLimit");
+        Integer quarterLimit = Integer.parseInt(stringQuarterLimit);
+        String stringDimeLimit = request.queryParams("dimeLimit");
+        Integer dimeLimit = Integer.parseInt(stringDimeLimit);
+        String stringNickelLimit = request.queryParams("nickelLimit");
+        Integer nickelLimit = Integer.parseInt(stringNickelLimit);
 
+        String changeCalculated = calculateCoins(userAmount, quarterLimit, dimeLimit, nickelLimit);
 
+        model.put("quarterLimit", quarterLimit);
+        model.put("dimeLimit", dimeLimit);
+        model.put("nickelLimit", nickelLimit);
         model.put("userAmount", userAmount);
         model.put("changeCalculated", changeCalculated);
 
@@ -33,14 +42,14 @@ public class CoinCalculator {
       }, new VelocityTemplateEngine());
 
 }
-      public static String calculateCoins(Integer amount) {
+      public static String calculateCoins(Integer amount, Integer availableQuarters, Integer availableDimes, Integer availableNickels) {
         Integer quarters = 0;
         Integer dimes = 0;
         Integer nickels = 0;
         Integer pennies = 0;
-        Integer availableQuarters = 1;
-        Integer availableDimes = 5;
-        Integer availableNickels = 3;
+        // Integer availableQuarters = 1;
+        // Integer availableDimes = 5;
+        // Integer availableNickels = 3;
 
         while (amount > 0) {
 
@@ -62,8 +71,23 @@ public class CoinCalculator {
           }
         }
 
-        String changeCalculated = String.format("%d Quarter(s), %d Dime(s), %d Nickel(s), and %d Pennie(s)", quarters, dimes, nickels, pennies);
+        String changeCalculated = String.format("%d Quarter(s), %d Dime(s), %d Nickel(s), and %d Pennie(s).", quarters, dimes, nickels, pennies);
+        changeCalculated += insufficientCoins(availableQuarters, availableDimes, availableNickels);
         return changeCalculated;
+      }
+
+      public static String insufficientCoins(Integer availableQuarters, Integer availableDimes, Integer availableNickels) {
+        String insufficientMessage ="";
+        if (availableQuarters == 0) {
+          insufficientMessage += " We ran out of quarters.";
+        }
+        if (availableDimes == 0) {
+          insufficientMessage += " We ran out of dimes.";
+        }
+        if (availableNickels == 0) {
+          insufficientMessage += " We ran out of nickels.";
+        }
+        return insufficientMessage;
       }
 
 }

@@ -12,27 +12,3 @@ For an input equal to 25, the program will return a quarter (25, 1 Quarter)
 
 For an input greater than 25, the program will return the greatest amount of quarters, followed by
 the greatest amout of dimes, followed by the greatest amount of nickels and the remainder in pennies (36, 1 Quarter, 1 Dime, 1 Penny)
-
-
-
-    public Integer calculateChange(Integer userInput) {
-
-
-
-    //   while (userInput > 0) {
-    //
-    //       if (userInput >= 25) {
-    //         quarters++;
-    //         totalChange = userInput - 25;
-    //     } else if (userInput >= 10) {
-    //         dimes++;
-    //         totalChange = userInput - 10;
-    //     } else if (userInput >= 5) {
-    //         pennies++;
-    //         totalChange = userInput - 1;
-    //     } else {
-    //       userInput = 0;
-    //     }
-    // }
-    // return totalChange;
-  }

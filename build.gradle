@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-archivesBaseName = "coin-calculator"
+archivesBaseName = "change-calculator"
 version = '1.0'
 mainClassName = "CoinCalculator"
 

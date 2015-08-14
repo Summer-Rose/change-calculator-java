@@ -1,10 +1,24 @@
 <h2 class="well">Change Calculator</h2>
 <p>Struggling to figure out how many quarters, dimes, nickels, or pennies to give your
     customers? Use the form below and save yourself the headache.</p>
+<div class="wrapper">
 <form action="/coinChangeResults">
   <div class="form-group">
-    <label for="userAmount">Enter amount:</label>
+    <label for="quarterLimit">Enter quarter limit:</label>
+    <input name="quarterLimit" id="quarterLimit" type="number" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="dimeLimit">Enter dimes limit:</label>
+    <input name="dimeLimit" id="dimeLimit" type="number" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="nickelLimit">Enter nickels limit:</label>
+    <input name="nickelLimit" id="nickelLimit" type="number" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="userAmount">Enter amount to change:</label>
     <input id="userAmount" name="userAmount" class="form-control" type="number">
   </div>
   <button type="submit" class="btn btn-info">Calculate</button>
 </form>
+</div>
